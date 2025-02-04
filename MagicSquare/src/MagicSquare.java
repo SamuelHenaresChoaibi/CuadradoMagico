@@ -112,4 +112,36 @@ public class MagicSquare {
 
         }
     }
+
+    public static void checkMagicSquare() {
+        System.out.println("\n\n--------------CHECK IF IT'S A MAGIC SQUARE--------------");
+
+        int n = matrix.length;
+        int[] suma = new int[2 * n + 2]; // Arreglo para almacenar sumas de filas, columnas y diagonales
+
+        // Sumar filas y columnas
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                suma[i] += matrix[i][j]; // Suma de filas
+                suma[n + j] += matrix[i][j]; // Suma de columnas
+            }
+        }
+
+        // Sumar diagonales
+        for (int i = 0; i < n; i++) {
+            suma[2 * n] += matrix[i][i]; // Diagonal principal
+            suma[2 * n + 1] += matrix[i][n - 1 - i]; // Diagonal secundaria
+        }
+
+        // Verificar si todas las sumas son iguales
+        int targetSum = suma[0];
+        for (int i = 1; i < suma.length; i++) {
+            if (suma[i] != targetSum) {
+                System.out.println("The Square is not Magic");
+                return;
+            }
+        }
+
+        System.out.println("The Square is Magic");
+    }
 }
