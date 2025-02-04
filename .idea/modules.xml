@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MagicSquare/MagicSquare.iml" filepath="$PROJECT_DIR$/MagicSquare/MagicSquare.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/MagicSquareEDE.iml" filepath="$PROJECT_DIR$/.idea/MagicSquareEDE.iml" />
+    </modules>
+  </component>
+</project>
