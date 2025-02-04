@@ -18,8 +18,22 @@ public class MagicSquare {
         this.longMatrix = longMatrix;
     }
 
-    public static void showMatrix() {
-        System.out.println("\n\n--------------SHOW MATRIX--------------");
+
+    //Cread un método put(int x, int y, int number) que pondrá un número en la posición indicada.
+    public void put(int x, int y, int number) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                if (matrix[i][j] == matrix[x][y]) {
+                    matrix[x][y] = number;
+                    break;
+                }
+            }
+        }
+
+    }
+
+    //Cread un método print() que pinta el cuadrado mágico por la terminal.
+    public void print() {
         if (matrix == null) {
             System.out.println("La matriz no está definida");
 
@@ -34,7 +48,31 @@ public class MagicSquare {
         }
     }
 
-    public static void printNoMagicNewMatrixRandom() {
+    public int sumRow(int row) {
+        int sumaRow = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                if (row == i) {
+                    sumaRow += matrix[i][j];
+                }
+            }
+        }
+        return sumaRow;
+    }
+
+    public int sumColumn(int column) {
+        int sumaColumn = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                if (column == j) {
+                    sumaColumn += matrix[i][j];
+                }
+            }
+        }
+        return sumaColumn;
+    }
+
+    public void generateNoMagicNewMatrixRandom() {
         System.out.println("\n\n--------------RANDOM MATRIX--------------");
         Random ran = new Random();
         System.out.println("\nNormal Matrix (No magic)");
@@ -48,7 +86,7 @@ public class MagicSquare {
         }
     }
 
-    public static void printMagicSquareRandom() {
+    public void generateMagicSquareRandom() {
         System.out.println("\n\n--------------RANDOM MAGIC SQUARE--------------");
         Random ran = new Random();
         System.out.println("\nMagic Square Random:");
@@ -70,7 +108,7 @@ public class MagicSquare {
         }
     }
 
-    public static boolean boolMagicSquare() {
+    public boolean boolMagicSquare() {
         int n = matrix.length;
         int[] suma = new int[2 * n + 2]; // Arreglo para almacenar sumas de filas, columnas y diagonales
 
@@ -99,21 +137,21 @@ public class MagicSquare {
     }
 
 
-    public static void writeMatrix() {
+    public void writeMatrix() {
         System.out.println("\n\n--------------WRITE MATRIX--------------");
         int num;
         Random ran = new Random();
         Scanner scan = new Scanner(System.in);
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
-                System.out.print("\nPosition ("+i+", "+j+"): ");
+                System.out.print("\nPosition (" + i + ", " + j + "): ");
                 matrix[i][j] = scan.nextInt();
             }
 
         }
     }
 
-    public static void checkMagicSquare() {
+    public void checkMagicSquare() {
         System.out.println("\n\n--------------CHECK IF IT'S A MAGIC SQUARE--------------");
 
         int n = matrix.length;
@@ -145,31 +183,5 @@ public class MagicSquare {
         System.out.println("The Square is Magic");
     }
 
-    public static void changeValuePosition() {
-        System.out.println("\n\n--------------CHANGE VALUE POSITION--------------");
-        int value, x, y;
-        Scanner scan = new Scanner(System.in);
-        showMatrix();
-        System.out.println("Take a position (X,Y)");
-        do {
-            System.out.print("X: ");
-            x = scan.nextInt();
-        } while (x > 0 || x >= longMatrix);
 
-        do {
-            System.out.print("Y: ");
-            y = scan.nextInt();
-        } while (y > 0 || y >= longMatrix);
-
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                if (matrix[i][j] == matrix[x][y]) {
-                    System.out.print("\nPut a value for the position " + x + ", " + y + ": ");
-                    value = scan.nextInt();
-                    matrix[x][y] = value;
-                }
-            }
-        }
-
-    }
 }
