@@ -144,4 +144,32 @@ public class MagicSquare {
 
         System.out.println("The Square is Magic");
     }
+
+    public static void changeValuePosition() {
+        System.out.println("\n\n--------------CHANGE VALUE POSITION--------------");
+        int value, x, y;
+        Scanner scan = new Scanner(System.in);
+        showMatrix();
+        System.out.println("Take a position (X,Y)");
+        do {
+            System.out.print("X: ");
+            x = scan.nextInt();
+        } while (x > 0 || x >= longMatrix);
+
+        do {
+            System.out.print("Y: ");
+            y = scan.nextInt();
+        } while (y > 0 || y >= longMatrix);
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                if (matrix[i][j] == matrix[x][y]) {
+                    System.out.print("\nPut a value for the position " + x + ", " + y + ": ");
+                    value = scan.nextInt();
+                    matrix[x][y] = value;
+                }
+            }
+        }
+
+    }
 }
