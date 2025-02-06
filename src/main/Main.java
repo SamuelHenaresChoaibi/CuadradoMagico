@@ -22,13 +22,14 @@ public class Main {
             System.out.println("0. Exit");
             System.out.println("1. Generate a Random Normal Matrix");
             System.out.println("2. Generate a Random Magic Square");
-            System.out.println("3. Write matrix");
-            System.out.println("4. Show matrix");
-            System.out.println("5. Check Magic Square");
-            System.out.println("6. Change length");
-            System.out.println("7. Change position value of the matrix");
-            System.out.println("8. Sum of numbers in a row");
-            System.out.println("9. Sum of numbers in a column");
+            System.out.println("3. Show matrix");
+            System.out.println("4. Check Magic Square");
+            System.out.println("5. Change length");
+            System.out.println("6. Change position value of the matrix");
+            System.out.println("a. Sum of numbers in a row");
+            System.out.println("b. Sum of numbers in a column");
+            System.out.println("c. Sum Main Diagonal");
+            System.out.println("d. Sum Secundary Diagonal");
             System.out.print("\nChoose an option: ");
             op = scan.next().charAt(0);
 
@@ -47,19 +48,22 @@ public class Main {
                     break;
 
                 case '3':
-                    matrix.writeMatrix();
-                    break;
-
-                case '4':
                     System.out.println("\n\n--------------SHOW MATRIX--------------");
                     matrix.print();
                     break;
 
-                case '5':
-                    matrix.checkMagicSquare();
+                case '4':
+                    boolean isMagic;
+                    System.out.println("\n\n--------------CHECK IF IT'S A MAGIC SQUARE--------------");
+                    isMagic = matrix.validate();
+                    if (isMagic) {
+                        System.out.println("The Square is Magic");
+                    } else {
+                        System.out.println("The Square is not Magic");
+                    }
                     break;
 
-                case '6':
+                case '5':
                     do {
                         System.out.print("¿Are you sure? The matrix will be eliminated (Y/N): ");
                         opChar = scan.next().charAt(0);
@@ -77,7 +81,7 @@ public class Main {
                             break;
                     }
 
-                case '7':
+                case '6':
                     System.out.println("\n\n--------------CHANGE VALUE POSITION--------------");
                     int value, x, y;
                     matrix.print();
@@ -97,28 +101,36 @@ public class Main {
                     matrix.print();
                     break;
 
-                case '8':
+                case 'a', 'A':
                     System.out.println("\n\n--------------SUM OF NUMBERS IN A ROW--------------");
                     matrix.print();
                     int row;
                     do {
-                        System.out.print("\nPut the row you want to sum (0 - " + (matrix.getLongMatrix()-1) + "): ");
+                        System.out.print("\nPut the row you want to sum (0 - " + (matrix.getLongMatrix() - 1) + "): ");
                         row = scan.nextInt();
                     } while (row < 0 || row >= matrix.getLongMatrix());
                     System.out.println("\nTotal sum of the row " + row + ": " + matrix.sumRow(row));
                     break;
 
 
-                case '9':
+                case 'b', 'B':
                     System.out.println("\n\n--------------SUM OF NUMBERS IN A COLUMN--------------");
                     matrix.print();
                     int column;
                     do {
-                        System.out.print("\nPut the column you want to sum (0 - " + (matrix.getLongMatrix()-1) + "): ");
+                        System.out.print("\nPut the column you want to sum (0 - " + (matrix.getLongMatrix() - 1) + "): ");
                         column = scan.nextInt();
                     } while (column < 0 || column >= matrix.getLongMatrix());
                     System.out.println("\nTotal sum of the column " + column + ": " + matrix.sumColumn(column));
                     break;
+
+                case 'c', 'C':
+                    System.out.println("\n\n--------------SUM OF NUMBERS OF MAIN DIGONAL--------------");
+                    System.out.println("Total sum of main diagonal: " + matrix.sumMainDiagonal());
+
+                case 'd', 'D':
+                    System.out.println("\n\n--------------SUM OF NUMBERS OF SECUNDARY DIGONAL--------------");
+                    System.out.println("Total sum of secundary diagonal: " + matrix.sumSecundaryDiagonal());
 
             }
 
