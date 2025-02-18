@@ -16,9 +16,10 @@ public class Main {
         }
     }
 
+    //Método "menuPrincipal()" para gestionar las opciones y los métodos de la clase "MagicSquare()"
     private static void menuPrincipal() {
         Scanner scan = new Scanner(System.in);
-        char op = 0, opChar;
+        char op, opChar;
         int longMatriz;
         System.out.println("--------------LENGTH--------------");
         do {
