@@ -1,9 +1,19 @@
+/**
+ * Clase main del MagicSquare
+ *
+ * @samuelhenareschoaibi
+ */
+
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-        menuPrincipal();
+    public static void main(String[] args) throws Exception {
+        try {
+            menuPrincipal();
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static void menuPrincipal() {
@@ -18,7 +28,7 @@ public class Main {
         MagicSquare matrix = new MagicSquare(longMatriz);
         matrix.setLongMatrix(longMatriz);
         do {
-            System.out.println("\n\n--------------MAGIC SQUARE--------------");
+            System.out.println("\n\n--------------MAGIC SQUARE MENU--------------");
             System.out.println("0. Exit");
             System.out.println("1. Generate a Random Normal Matrix");
             System.out.println("2. Generate a Random Magic Square");
@@ -40,10 +50,14 @@ public class Main {
                     break;
 
                 case '1':
+                    System.out.println("\n\n--------------RANDOM MATRIX--------------");
+                    System.out.println("\nNormal Matrix (No magic)");
                     matrix.generateNoMagicNewMatrixRandom();
                     break;
 
                 case '2':
+                    System.out.println("\n\n--------------RANDOM MAGIC SQUARE--------------");
+                    System.out.println("\nMagic Square Random:");
                     matrix.generateMagicSquareRandom();
                     break;
 
