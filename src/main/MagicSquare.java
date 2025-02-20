@@ -48,6 +48,14 @@ public class MagicSquare {
         this.matrix = new int[longMatrix][longMatrix]; // Redimensionar la matriz
     }
 
+    public int[][] getMatrix(){
+        return matrix;
+    }
+
+    public void setMatrix(int[][] matrix){
+        this.matrix = matrix;
+    }
+
 
     /**
      * Cread un método put(int x, int y, int number) que pondrá un número en la posición indicada.

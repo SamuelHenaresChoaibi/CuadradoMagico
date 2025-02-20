@@ -21,6 +21,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         char op, opChar;
         int longMatriz;
+        int[][] auxMatrix;
         System.out.println("--------------LENGTH--------------");
         do {
             System.out.print("Assigns a length to the matrix: ");
@@ -28,6 +29,7 @@ public class Main {
         } while (longMatriz < 0);
         MagicSquare matrix = new MagicSquare(longMatriz);
         matrix.setLongMatrix(longMatriz);
+        auxMatrix = new int[matrix.getLongMatrix()][matrix.getLongMatrix()];
         do {
             System.out.println("\n\n--------------MAGIC SQUARE MENU--------------");
             System.out.println("0. Exit");
@@ -37,6 +39,8 @@ public class Main {
             System.out.println("4. Check Magic Square");
             System.out.println("5. Change length");
             System.out.println("6. Change position value of the matrix");
+            System.out.println("7. Get Matrix (Save Matrix)");
+            System.out.println("8. Set Matrix");
             System.out.println("a. Sum of numbers in a row");
             System.out.println("b. Sum of numbers in a column");
             System.out.println("c. Sum Main Diagonal");
@@ -90,6 +94,7 @@ public class Main {
                             System.out.print("Assigns a length to the matrix: ");
                             longMatriz = scan.nextInt();
                             matrix.setLongMatrix(longMatriz);
+                            auxMatrix = new int[matrix.getLongMatrix()][matrix.getLongMatrix()];
                             break;
 
                         default:
@@ -115,6 +120,24 @@ public class Main {
                     matrix.put(x, y, number);
                     matrix.print();
                     break;
+
+                case '7':
+                    try{
+                        auxMatrix = matrix.getMatrix();
+                        System.out.println("Matrix Saved");
+                    } catch (Exception e) {
+                        System.out.println("Error con la matriz auxiliar");;
+                    }
+                    break;
+                case '8':
+                    try{
+                        matrix.setMatrix(auxMatrix);
+                        System.out.println("Updated Matrix");
+                    } catch (Exception e) {
+                        System.out.println("Error con la matriz auxiliar");;
+                    }
+                    break;
+
 
                 case 'a', 'A':
                     System.out.println("\n\n--------------SUM OF NUMBERS IN A ROW--------------");
